@@ -13,11 +13,11 @@ db.serialize(() => {
     subComponentsDb.run("CREATE TABLE IF NOT EXISTS subcomponents (subid INTEGER PRIMARY KEY AUTOINCREMENT, componentid INTEGER NOT NULL, name TEXT, status TEXT, decription TEXT, branch TEXT, branchPaths TEXT, FOREIGN KEY (componentid) REFERENCES components (componentid))")
 })
 
+module.exports = { db, compopnentDb, subComponentsDb}
 
 
 
 
-// 
 
 
 
