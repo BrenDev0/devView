@@ -6,11 +6,11 @@ const newProject = (event, data) => {
 }
 
 const getAllProjects = () => {
-    const stmt = "SELECT * FROM projects"
+    const stmt = ("SELECT * FROM projects")
     db.all(stmt, [], (err, rows) => {
         const projects  = []
         if (err) {
-            throw err
+            return console.log(err.message)
         }
 
         rows.forEach((row) => {
@@ -20,6 +20,30 @@ const getAllProjects = () => {
     })
 }
 
+const findProject = (event, id) => {
+    const stmt = ("SELECT * FROM projects WHERE projectid = ?")
 
-module.exports = { newProject, getAllProjects }
+    db.get(stmt, [id], (err, row) => {
+        if(err) {
+            return console.log(err.message)
+        }
+
+        return row ? row : console.log('Project Not Found')
+    })
+    
+} 
+
+const deleteProject = (event, id) => {
+    const stmt = ("DELETE FROM projects WHERE projectid = ?")
+    db.run(stmt, [id], (err) => {
+        if (err) {
+            console.log(err.message)
+        }
+        console.log(`Deleted ${this.changes}`)
+    })
+}
+
+
+
+module.exports = { newProject, getAllProjects, findProject, deleteProject }
 
