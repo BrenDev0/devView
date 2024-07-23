@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./database/projects.db');
-const compopnentDb = new sqlite3.Database('./database/components.db')
-const subComponentsDb = new sqlite3.Database('./database/subComponents.db')
+const db = new sqlite3.Database('./database/tables/projects.db');
+const compopnentDb = new sqlite3.Database('./database/tables/components.db')
+const subComponentsDb = new sqlite3.Database('./database/tables/subComponents.db')
 
 
 // projects database
