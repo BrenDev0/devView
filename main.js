@@ -1,7 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path')
 const db = require('./database/models.js')
-const { newProject, getAllProjects, findProject, deleteProject } = require('./database/controllers/projectsController.js')
+const { newProject, getAllProjects, findProject, deleteProject, updateProjectData } = require('./database/controllers/projectsController.js')
+
 
 
 const CreateWindow = () => {
@@ -23,14 +24,16 @@ app.whenReady().then(() => {
     ipcMain.on('get-all-projects', getAllProjects)
     ipcMain.on('find-project', findProject)
     ipcMain.on('delete-project', deleteProject)
+    ipcMain.on('update-data', updateProjectData)
     CreateWindow()
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            ipcMain.on('new-project', newProject)
-            ipcMain.on('get-all-projects', getAllProjects)
+            ipcMain.on('new-project',  newProject)
+            ipcMain.handle('get-all-projects', getAllProjects)
             ipcMain.on('find-project', findProject)
             ipcMain.on('delete-project', deleteProject)
+            ipcMain.on('update-data', updateProjectData)
             CreateWindow()
         }
     })
