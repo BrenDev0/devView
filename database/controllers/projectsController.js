@@ -55,7 +55,7 @@ const updateProjectData = (data) => {
                 if (err){
                     return console.log(err.message)
                 }
-                return console.log(`Updated ${this.changes}`)
+                return console.log('Updated: Name')
             })
             break
         case "LANGUAGE":
@@ -64,7 +64,7 @@ const updateProjectData = (data) => {
                 if (err) {
                     return console.log(err.message)
                 }
-                return console.log(`Updatae: ${this.changes}`)
+                return console.log(`Updated: Language`)
             }) 
             break
         case "STATUS":
@@ -73,7 +73,7 @@ const updateProjectData = (data) => {
                 if (err) {
                     return console.log(err.message)
                 }
-                return console.log(`Update: ${this.changes}`)
+                console.log('Updated: Status')
             }) 
             break
         case "DESCRIPTION":
@@ -82,7 +82,7 @@ const updateProjectData = (data) => {
                 if (err){
                     return console.log(err.message)
                 }
-                return console.log(`Update: ${this.changes}`)
+                return console.log('Updated: Discription')
             }) 
             break     
         default:
