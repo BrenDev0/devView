@@ -42,7 +42,7 @@ const deleteProject = (id) => {
         if (err) {
             console.log(err.message)
         }
-        console.log(`Deleted ${this.changes}`)
+        console.log('Project Deleted')
     })
 }
 
