@@ -5,33 +5,33 @@ const newProject = (event, data) => {
     stmt.run(data) 
 }
 
-const getAllProjects = () => {
+const getAllProjects = async(event) => {
     const stmt = ("SELECT * FROM projects")
-    
-    db.all(stmt, [], (err, rows) => {
-        const projects = []
-        if (err) {
-            return console.log(err.message)
-        }
-
-        rows.forEach((row) => {
-            projects.push(row)
+    return new Promise((resolve, reject) => {
+        db.all(stmt, [], (err, rows) => {
+            if (err) {
+                reject(err)
+            }
+            else{
+                resolve(rows)
+            }
         })
-
-        return projects
     })
-    
+
+        
 }
 
 const findProject = (event, id) => {
     const stmt = ("SELECT * FROM projects WHERE projectid = ?")
 
-    db.get(stmt, [id], (err, row) => {
-        if(err) {
-            return console.log(err.message)
-        }
-
-        return row ? row : console.log('Project Not Found')
+    return new Promise((resolve, reject) => {
+        db.get(stmt, [id], (err, row) => {
+            if(err) {
+                reject(err)
+            }
+    
+            resolve(row ? row : console.log('Project Not Found') )
+        })
     })
     
 } 

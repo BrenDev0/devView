@@ -21,8 +21,8 @@ const CreateWindow = () => {
 
 app.whenReady().then(() => {
     ipcMain.on('new-project', newProject)
-    ipcMain.on('get-all-projects', getAllProjects)
-    ipcMain.on('find-project', findProject)
+    ipcMain.handle('get-all-projects', getAllProjects)
+    ipcMain.handle('find-project', findProject)
     ipcMain.on('delete-project', deleteProject)
     ipcMain.on('update-data', updateProjectData)
     CreateWindow()
