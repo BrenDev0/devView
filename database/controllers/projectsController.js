@@ -1,11 +1,11 @@
 const { db } =  require('../models.js')
 
-const newProject = (event, data) => {
+const newProject = (data) => {
     const stmt = db.prepare("INSERT OR IGNORE INTO projects (name, language, status, description) VALUES (?,?,?,?)")
     stmt.run(data) 
 }
 
-const getAllProjects = async(event) => {
+const getAllProjects = async() => {
     const stmt = ("SELECT * FROM projects")
     return new Promise((resolve, reject) => {
         db.all(stmt, [], (err, rows) => {
@@ -21,7 +21,7 @@ const getAllProjects = async(event) => {
         
 }
 
-const findProject = (event, id) => {
+const findProject = (id) => {
     const stmt = ("SELECT * FROM projects WHERE projectid = ?")
 
     return new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ const findProject = (event, id) => {
     
 } 
 
-const deleteProject = (event, id) => {
+const deleteProject = (id) => {
     const stmt = ("DELETE FROM projects WHERE projectid = ?")
     db.run(stmt, [id], (err) => {
         if (err) {
@@ -46,10 +46,10 @@ const deleteProject = (event, id) => {
     })
 }
 
-const updateProjectData = (event, data) => {
+const updateProjectData = (data) => {
     let stmt = ""
     switch (data.col) {
-        case data.col === "NAME":
+        case "NAME":
             stmt = ("UPDATE projects SET name = ? WHERE projectid = ?")
             db.run(stmt, [data.value, data.id], (err) => {
                 if (err){
@@ -58,7 +58,7 @@ const updateProjectData = (event, data) => {
                 return console.log(`Updated ${this.changes}`)
             })
             break
-        case data.col === "LANGUAGE":
+        case "LANGUAGE":
             stmt = ("UPDATE projects SET language = ? WHERE projectid = ?")
             db.run(stmt, [data.value, data.id], (err) => {
                 if (err) {
@@ -67,7 +67,7 @@ const updateProjectData = (event, data) => {
                 return console.log(`Updatae: ${this.changes}`)
             }) 
             break
-        case data.col === "STATUS":
+        case "STATUS":
             stmt = ("UPDATE projects SET status = ?  WHERE projectid = ?") 
             db.run(stmt, [data.value, data.id], (err) => {
                 if (err) {
@@ -76,7 +76,7 @@ const updateProjectData = (event, data) => {
                 return console.log(`Update: ${this.changes}`)
             }) 
             break
-        case data.col === "DESCRIPTION":
+        case "DESCRIPTION":
             stmt = ("UPDATE projects SET description = ? WHERE projectid = ?")
             db.run(stmt, [data.value, data.id], (err) => {
                 if (err){
