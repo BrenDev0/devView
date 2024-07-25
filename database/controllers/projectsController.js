@@ -40,9 +40,9 @@ const deleteProject = (id) => {
     const stmt = ("DELETE FROM projects WHERE projectid = ?")
     db.run(stmt, [id], (err) => {
         if (err) {
-            console.log(err.message)
+          return   console.log(err.message)
         }
-        console.log('Project Deleted')
+       return  console.log('Project Deleted')
     })
 }
 
@@ -73,7 +73,7 @@ const updateProjectData = (data) => {
                 if (err) {
                     return console.log(err.message)
                 }
-                console.log('Updated: Status')
+                return console.log('Updated: Status')
             }) 
             break
         case "DESCRIPTION":
