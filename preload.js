@@ -11,7 +11,7 @@ contextBridge.exposeInMainWorld('projectsAPI', {
 
 contextBridge.exposeInMainWorld('componentsAPI', {
     newComponents: (data) => ipcRenderer.invoke('components', {route: 'new-component', data: data}),
-    getAllComponents: () => ipcRenderer.invoke('components', {route: 'get-all-components'}),
+    getAllComponents: () => ipcRenderer.invoke('components', {route: 'get-all-project-components'}),
     findComponents: (id) => ipcRenderer.invoke('components', {route: 'find-component', id: id}),
     deleteComponents: (id) => ipcRenderer.invoke('components', {route: 'delete-component', id: id}),
     updateData: (data) => ipcRenderer.invoke('components', {route: 'update-data', data: data})
