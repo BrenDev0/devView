@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path')
 const db = require('./database/models.js')
 const projectRouter = require('./database/routes/projectsRouter.js')
+const componentsRouter = require('./database/routes/componentsRouter.js')
 
 
 
@@ -21,11 +22,13 @@ const CreateWindow = () => {
 
 app.whenReady().then(() => {
     ipcMain.handle('projects', projectRouter)
+    ipcMain.handle('components', componentsRouter)
     CreateWindow()
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            
+            ipcMain.handle('projects', projectRouter)
+            ipcMain.handle('components', componentsRouter)
             CreateWindow()
         }
     })
