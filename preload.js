@@ -16,3 +16,12 @@ contextBridge.exposeInMainWorld('componentsAPI', {
     deleteComponents: (id) => ipcRenderer.invoke('components', {route: 'delete-component', id: id}),
     updateData: (data) => ipcRenderer.invoke('components', {route: 'update-data', data: data})
 })
+
+
+contextBridge.exposeInMainWorld('subComponentsAPI', {
+    newComponents: (data) => ipcRenderer.invoke('sub-components', {route: 'new-sub-component', data: data}),
+    getAllComponents: () => ipcRenderer.invoke('sub-components', {route: 'get-all-sub-components'}),
+    findComponents: (id) => ipcRenderer.invoke('sub-components', {route: 'find-sub-component', id: id}),
+    deleteComponents: (id) => ipcRenderer.invoke('sub-components', {route: 'delete-sub-component', id: id}),
+    updateData: (data) => ipcRenderer.invoke('sub-components', {route: 'update-data', data: data})
+})
