@@ -59,7 +59,8 @@ const updateComponentData = (data) => {
                 }
                 return console.log('Updated: Name')
             })
-            break
+            break;
+
         case "LANGUAGE":
             stmt = ("UPDATE components SET language = ? WHERE componentid = ?")
             componentsDb.run(stmt, [data.value, data.id], (err) => {
@@ -68,7 +69,8 @@ const updateComponentData = (data) => {
                 }
                 return console.log(`Updated: Language`)
             }) 
-            break
+            break;
+
         case "STATUS":
             stmt = ("UPDATE components SET status = ?  WHERE componentid = ?") 
             componentsDb.run(stmt, [data.value, data.id], (err) => {
@@ -77,7 +79,8 @@ const updateComponentData = (data) => {
                 }
                 return console.log('Updated: Status')
             }) 
-            break
+            break;
+
         case "DESCRIPTION":
             stmt = ("UPDATE components SET description = ? WHERE componentid = ?")
             componentsDb.run(stmt, [data.value, data.id], (err) => {
@@ -86,28 +89,11 @@ const updateComponentData = (data) => {
                 }
                 return console.log('Updated: Discription')
             }) 
-            break     
-        case "BRANCH":
-            stmt = ("UPDATE components SET branch = ? WHERE componentid = ?")
-            componentsDb.run(stmt, [data.value, data.id], (err) => {
-                if (err){
-                    return console.log(err.message)
-                }
-                return console.log('Updated: Discription')
-            }) 
-            break     
-        case "BRANCHPATHS":
-            stmt = ("UPDATE components SET branchPaths = ? WHERE componentid = ?")
-            componentsDb.run(stmt, [data.value, data.id], (err) => {
-                if (err){
-                    return console.log(err.message)
-                }
-                return console.log('Updated: Discription')
-            }) 
-            break     
+            break;    
+        
         default:
             console.log("Update Failed")
-            break    
+            break;   
     }
 }
 
