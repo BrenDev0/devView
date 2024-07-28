@@ -1,0 +1,27 @@
+#projects {
+    background: var(--red);
+    height: 100%;
+    width: 100%;
+    padding: 10px 0 0 0
+    
+}
+
+.projects-con {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-con span {
+    padding: 10px
+}
+
+.project {
+    padding: 5px 0 5px 15px;
+    cursor: pointer;
+}
+
+.project:hover {
+    background: var(--hover);
+}
