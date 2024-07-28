@@ -1,17 +1,28 @@
 @import url('projectList.css'); 
 
+:root {
+    --background: rgb(40, 40, 40);
+    --red: rgb(56, 24, 32);
+    --font: rgb(122, 122, 122);
+    --hover: rgb(117, 22, 40);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    color: var(--font)
+}
+
+html, body {
+   height: 100%;
 }
 
 body {
-    margin: 0;
-    padding: 20px ;
-    min-height: 100vh;
+    background: var(--background);
+    padding: 20px;
 }
 
 
