@@ -1,9 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path')
-const db = require('./database/models.js')
-const projectRouter = require('./database/routes/projectsRouter.js')
-const componentsRouter = require('./database/routes/componentsRouter.js')
-const subComponentsRouter = require('./database/routes/subComponentsRouter.js')
+const db = require('./backend/models.js')
+const projectRouter = require('./backend/routes/projectsRouter.js')
+const componentsRouter = require('./backend/routes/componentsRouter.js')
+const subComponentsRouter = require('./backend/routes/subComponentsRouter.js')
 
 
 

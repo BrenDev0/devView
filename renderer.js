@@ -1,4 +1,4 @@
-import { projectLister } from './components/projectLister.js'  
+import { projectLister } from './frontend/components/projectLister.js'  
 
 const projects = await window.projectsAPI.getAllProjects()
 
