@@ -2,7 +2,6 @@ export const highlight = (event, name) => {
     const items = document.getElementsByClassName(name)
     
     for (let i = 0; i < items.length; i++){
-        console.log('loop')
         items[i].className = items[i].className.replace(' active', '')
     }
 
